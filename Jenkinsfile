@@ -1,15 +1,16 @@
-pipeline { 
+
+pipeline {
     agent any
-    stages{
-         stage('Permission') {  
-            steps{
-                sh 'chmod 777 /var/jenkins_home/workspace/Delivery-build@tmp'
+
+    stages {
+        stage('Compile') {
+            steps {
+                gradlew('clean', 'classes')
             }
         }
-        stage('Build') { 
-            steps{
-                sh './gradlew build'
-            } 
-        }
     }
+}
+
+def gradlew(String... args) {
+    sh "./gradlew ${args.join(' ')} -s"
 }
