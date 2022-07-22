@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Compile') {
             steps {
@@ -18,13 +17,7 @@ pipeline {
             }
         }
     }
-    post {
-        failure {
-            mail to: 'eosh@gft.commm', subject: 'Build failed', body: 'Please fix!'
-        }
-    }
 }
-
 def gradlew(String... args) {
     sh "./gradlew ${args.join(' ')} -s"
 }
