@@ -1,16 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Clean') {
+        stage('Compile') {
             steps {
-                sh './gradlew clean'
+                gradlew('clean', 'classes')
             }
         }
-        stage('Build') {
-                    steps {
-                        sh './gradlew build'
-                    }
-                }
         stage('Unit Tests') {
             steps {
                 gradlew('test')
@@ -22,4 +17,7 @@ pipeline {
             }
         }
     }
+}
+def gradlew(String... args) {
+    sh "./gradlew ${args.join(' ')} -s"
 }
