@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                withGradle(){
-                    sh './gradlew --version'
-                }
+                    sh 'gradle --version'
             }
         }
     }
