@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                gradlew('clean', 'classes')
+                gradle 'build'
             }
         }
         stage('Unit Tests') {
@@ -17,7 +17,4 @@ pipeline {
             }
         }
     }
-}
-def gradlew(String... args) {
-    sh "./gradlew ${args.join(' ')} -s"
 }
