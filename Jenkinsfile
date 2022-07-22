@@ -4,7 +4,7 @@ pipeline {
         stage('Compile') {
             steps {
                 withGradle(){
-                    sh './gradlew -v'
+                    sh './gradlew --version'
                 }
             }
         }
