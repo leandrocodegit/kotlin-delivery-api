@@ -4,6 +4,7 @@ import com.api.delivery.build.Builder
 import com.api.delivery.model.Delivery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import org.bson.types.ObjectId
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -45,6 +46,6 @@ class DeliveryRepositoryTest {
     @Test
     fun `test get delivery this client and delivery id`(){
         val findDelivery:  Delivery  = deliveryRepository.findByIdAndIdClient(delivery.id, delivery.idClient).get()
-        assert(findDelivery.id == delivery.id)
+        assert(findDelivery.id == ObjectId(""))
     }
 }
