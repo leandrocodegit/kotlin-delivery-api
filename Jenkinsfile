@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+    stage('configure') {
+                steps {
+                    gradle 'wrapper --gradle-version 5.1.1'
+                }
+            }
         stage('Compile') {
             steps {
                 gradlew('clean', 'classes')
