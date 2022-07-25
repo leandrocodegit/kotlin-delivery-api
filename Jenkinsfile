@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
     stage('configure') {
                 steps {
@@ -22,7 +23,9 @@ pipeline {
             }
         }
     }
+ 
 }
+
 def gradlew(String... args) {
     sh "./gradlew ${args.join(' ')} -s"
 }
